@@ -25,8 +25,8 @@ fn main() {
 }
 
 fn loop_1(my_array: &mut [i32; 3]) {
-    let mut n:usize = my_array.len();
-    while n >= my_array.len(){
+    let mut n: usize = my_array.len();
+    while n >= my_array.len() {
         println!("Input index:");
         let mut i = String::new();
         stdin().read_line(&mut i).expect("Error");
@@ -43,9 +43,9 @@ fn loop_1(my_array: &mut [i32; 3]) {
 }
 
 fn loop_2(my_array: &mut [i32; 3]) {
-    let mut n:usize = my_array.len();
+    let mut n: usize = my_array.len();
     let mut value = 0;
-    while n >= my_array.len(){
+    while n >= my_array.len() {
         println!("Input index:");
         let mut i = String::new();
         stdin().read_line(&mut i).expect("Error");
