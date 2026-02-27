@@ -1,6 +1,6 @@
 #[derive(Debug)]
 #[allow(dead_code)]
-enum Status{
+enum Status {
     InStock,
     OnWay(u32),
     Discontinued,
@@ -14,19 +14,29 @@ struct Item {
     status: Status,
 }
 
-impl Item{
-    fn new(name: &str, quantity: u32, price: f64, status: Status) -> Self{
-        Self { name: name.to_string(), quantity, price, status}
+impl Item {
+    fn new(name: &str, quantity: u32, price: f64, status: Status) -> Self {
+        Self {
+            name: name.to_string(),
+            quantity,
+            price,
+            status,
+        }
     }
 
-    fn total_value(&self) -> f64{
+    fn total_value(&self) -> f64 {
         self.price * self.quantity as f64
     }
 }
 
 fn main() {
     let mut inventory: Vec<Item> = Vec::new();
-    inventory.push(Item { name: "laptap".to_string(), quantity: 50, price: 1000.5, status: Status::OnWay(5) });
+    inventory.push(Item {
+        name: "laptap".to_string(),
+        quantity: 50,
+        price: 1000.5,
+        status: Status::OnWay(5),
+    });
     inventory.push(Item::new("mobile", 100, 560.3, Status::InStock));
 
     add_item(&mut inventory, "mobile", 20, 40.0, Status::Discontinued);
@@ -34,12 +44,15 @@ fn main() {
     show_inventory(&inventory);
 
     println!("{}", contains_item(&inventory, "mobile"));
-    println!("total vlaue of inventory: {}$", total_inventory_value(&inventory));
+    println!(
+        "total vlaue of inventory: {}$",
+        total_inventory_value(&inventory)
+    );
 }
 
-fn total_inventory_value(inventory: &[Item]) -> f64{
+fn total_inventory_value(inventory: &[Item]) -> f64 {
     let mut value: f64 = 0.0;
-    for item in inventory{
+    for item in inventory {
         match &item.status {
             Status::InStock => value += item.total_value(),
             Status::OnWay(_) => continue,

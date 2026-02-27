@@ -1,7 +1,6 @@
 use std::{thread, time::Duration};
 
-fn main(){
-
+fn main() {
     let handle = thread::spawn(|| {
         println!("Spawn");
         thread::sleep(Duration::from_millis(3000));
